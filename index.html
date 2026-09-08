@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>다음 강의는 당신의 의견으로 만들어집니다 | 잔재미코딩 학습자 서베이 이벤트</title>
+<meta name="description" content="잔재미코딩 학습자 서베이 이벤트 — 5분 응답으로 무료 수강권과 30% 할인 쿠폰에 응모하세요.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#153A9B;
+    --blue-dark:#0E2A73;
+    --orange:#F04A23;
+    --cream:#F2ECDE;
+    --navy:#0B1B3A;
+    --ink:#1B2436;
+    --muted:#5B6479;
+    --line:#E4E7EF;
+    --bg:#FFFFFF;
+    --radius:18px;
+    --shadow:0 10px 30px rgba(11,27,58,.08);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    font-family:"Noto Sans KR",-apple-system,BlinkMacSystemFont,"Segoe UI","Malgun Gothic",sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  .wrap{width:100%;max-width:1080px;margin:0 auto;padding:0 24px}
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,255,255,.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .header-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;height:72px}
+  .logo{height:34px;width:auto}
+  .header-cta{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--orange);color:#fff;text-decoration:none;
+    font-weight:700;font-size:15px;
+    padding:11px 20px;border-radius:999px;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+  }
+  .header-cta:hover{background:#D93C17;transform:translateY(-1px);box-shadow:0 8px 20px rgba(240,74,35,.3)}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    background:linear-gradient(160deg,var(--blue) 0%,var(--blue-dark) 55%,#081C4E 100%);
+    color:#fff;
+    padding:88px 0 96px;
+  }
+  .hero::before,.hero::after{
+    content:"";position:absolute;border-radius:50%;pointer-events:none;
+  }
+  .hero::before{
+    width:520px;height:520px;right:-140px;top:-190px;
+    background:radial-gradient(circle at center,rgba(240,74,35,.42),transparent 68%);
+  }
+  .hero::after{
+    width:420px;height:420px;left:-150px;bottom:-190px;
+    background:radial-gradient(circle at center,rgba(242,236,222,.22),transparent 70%);
+  }
+  .hero .wrap{position:relative;z-index:1}
+  .eyebrow{
+    display:inline-block;
+    font-size:13px;font-weight:700;letter-spacing:.06em;
+    color:var(--cream);
+    background:rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.24);
+    padding:7px 16px;border-radius:999px;
+    margin-bottom:26px;
+  }
+  .hero h1{
+    margin:0 0 22px;
+    font-size:clamp(30px,5.6vw,58px);
+    font-weight:900;line-height:1.25;letter-spacing:-.02em;
+    max-width:16em;
+  }
+  .hero h1 em{font-style:normal;color:#FF9270}
+  .hero-sub{
+    margin:0 0 14px;
+    font-size:clamp(16px,2vw,19px);
+    color:rgba(255,255,255,.9);
+    max-width:34em;
+  }
+  .hero-target{
+    margin:0 0 36px;
+    font-size:15px;color:rgba(255,255,255,.68);
+  }
+  .btn-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    text-decoration:none;font-weight:700;
+    border-radius:999px;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease, color .15s ease;
+  }
+  .btn-primary{
+    background:var(--orange);color:#fff;
+    font-size:18px;padding:17px 40px;
+    box-shadow:0 12px 28px rgba(240,74,35,.36);
+  }
+  .btn-primary:hover{background:#D93C17;transform:translateY(-2px);box-shadow:0 16px 34px rgba(240,74,35,.44)}
+  .btn-ghost{
+    background:transparent;color:#fff;
+    border:1.5px solid rgba(255,255,255,.4);
+    font-size:16px;padding:15px 30px;
+  }
+  .btn-ghost:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.7)}
+  .hero-note{margin:22px 0 0;font-size:14px;color:rgba(255,255,255,.6)}
+
+  /* ---------- Section basics ---------- */
+  section.block{padding:84px 0}
+  section.block.alt{background:#FAFAF7;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .sec-head{margin-bottom:44px}
+  .sec-label{
+    font-size:13px;font-weight:700;letter-spacing:.1em;
+    color:var(--orange);margin:0 0 12px;
+  }
+  .sec-title{
+    margin:0;font-size:clamp(24px,3.4vw,34px);
+    font-weight:900;letter-spacing:-.015em;color:var(--navy);
+  }
+  .sec-desc{margin:14px 0 0;color:var(--muted);font-size:16px;max-width:36em}
+
+  /* ---------- Steps ---------- */
+  .steps{
+    list-style:none;margin:0;padding:0;
+    display:grid;gap:20px;
+    grid-template-columns:repeat(4,1fr);
+    counter-reset:step;
+  }
+  .steps li{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:28px 24px 26px;
+    box-shadow:var(--shadow);
+    position:relative;
+  }
+  .step-num{
+    display:flex;align-items:center;justify-content:center;
+    width:42px;height:42px;border-radius:12px;
+    background:var(--blue);color:#fff;
+    font-weight:900;font-size:18px;
+    margin-bottom:16px;
+  }
+  .steps li:nth-child(2) .step-num{background:var(--orange)}
+  .steps li:nth-child(3) .step-num{background:var(--blue)}
+  .steps li:nth-child(4) .step-num{background:var(--navy)}
+  .step-text{font-size:17px;font-weight:700;color:var(--navy);margin:0}
+
+  /* ---------- Prizes ---------- */
+  .prizes{display:grid;gap:24px;grid-template-columns:repeat(2,1fr)}
+  .prize{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:34px 30px;box-shadow:var(--shadow);
+    position:relative;overflow:hidden;
+  }
+  .prize::before{
+    content:"";position:absolute;inset:0 auto 0 0;width:5px;
+  }
+  .prize.first::before{background:var(--orange)}
+  .prize.second::before{background:var(--blue)}
+  .rank{
+    display:inline-block;font-size:13px;font-weight:900;letter-spacing:.06em;
+    padding:6px 14px;border-radius:999px;margin-bottom:18px;
+  }
+  .prize.first .rank{background:rgba(240,74,35,.1);color:var(--orange)}
+  .prize.second .rank{background:rgba(21,58,155,.1);color:var(--blue)}
+  .prize h3{
+    margin:0 0 10px;font-size:clamp(20px,2.6vw,25px);
+    font-weight:900;color:var(--navy);letter-spacing:-.01em;line-height:1.4;
+  }
+  .prize p{margin:0;color:var(--muted);font-size:16px}
+
+  /* ---------- Schedule ---------- */
+  .schedule{
+    list-style:none;margin:0;padding:0;
+    border:1px solid var(--line);border-radius:var(--radius);
+    background:#fff;overflow:hidden;box-shadow:var(--shadow);
+  }
+  .schedule li{
+    display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 20px;
+    padding:24px 28px;
+    border-bottom:1px solid var(--line);
+  }
+  .schedule li:last-child{border-bottom:0}
+  .sch-key{
+    flex:0 0 150px;
+    font-weight:700;color:var(--navy);font-size:16px;
+  }
+  .sch-val{color:var(--muted);font-size:16px;margin:0}
+
+  /* ---------- CTA band ---------- */
+  .cta-band{
+    background:var(--cream);
+    padding:80px 0;
+    text-align:center;
+  }
+  .cta-band h2{
+    margin:0 0 16px;
+    font-size:clamp(23px,3.4vw,34px);font-weight:900;
+    color:var(--navy);letter-spacing:-.015em;line-height:1.4;
+  }
+  .cta-band p{margin:0 auto 32px;color:#5A5546;font-size:17px;max-width:30em}
+  .cta-band .hero-note{color:#7A7462;margin-top:20px}
+
+  /* ---------- Footer ---------- */
+  footer{
+    background:var(--navy);color:rgba(255,255,255,.72);
+    padding:56px 0 44px;font-size:15px;
+  }
+  .footer-inner{display:flex;flex-wrap:wrap;gap:28px;justify-content:space-between;align-items:flex-start}
+  .brand-line{margin:0 0 14px;color:#fff;font-weight:700;font-size:17px;max-width:30em;line-height:1.6}
+  .footer-links{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px 22px}
+  .footer-links a{color:rgba(255,255,255,.72);text-decoration:none}
+  .footer-links a:hover{color:#fff;text-decoration:underline}
+  .footer-contact{margin:16px 0 0;color:rgba(255,255,255,.6)}
+  .footer-contact a{color:var(--cream)}
+
+  /* ---------- Floating CTA ---------- */
+  .floating-cta{
+    position:fixed;right:26px;bottom:26px;z-index:60;
+    width:66px;height:66px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--orange);color:#fff;text-decoration:none;
+    box-shadow:0 12px 28px rgba(240,74,35,.42);
+    transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+  }
+  .floating-cta:hover,.floating-cta:focus-visible{
+    background:#D93C17;
+    transform:scale(1.09);
+    box-shadow:0 18px 38px rgba(240,74,35,.5);
+  }
+  .floating-cta svg{width:28px;height:28px}
+  /* 호버 시 좌측에 나타나는 라벨 */
+  .floating-cta::after{
+    content:"서베이 참여하기";
+    position:absolute;right:calc(100% + 12px);
+    white-space:nowrap;
+    background:var(--navy);color:#fff;
+    font-size:14px;font-weight:700;
+    padding:8px 14px;border-radius:999px;
+    opacity:0;transform:translateX(6px);
+    pointer-events:none;
+    transition:opacity .2s ease, transform .2s ease;
+  }
+  .floating-cta:hover::after,.floating-cta:focus-visible::after{opacity:1;transform:none}
+
+  /* ---------- Modal ---------- */
+  .modal-overlay{
+    position:fixed;inset:0;z-index:100;
+    display:flex;align-items:center;justify-content:center;
+    padding:24px;
+    background:rgba(11,27,58,.62);
+    backdrop-filter:blur(3px);
+    opacity:0;visibility:hidden;
+    transition:opacity .2s ease, visibility .2s ease;
+  }
+  .modal-overlay.is-open{opacity:1;visibility:visible}
+  .modal{
+    width:100%;max-width:420px;
+    background:#fff;border-radius:20px;
+    padding:36px 32px 28px;text-align:center;
+    box-shadow:0 24px 60px rgba(11,27,58,.3);
+    transform:translateY(14px) scale(.97);
+    transition:transform .22s ease;
+  }
+  .modal-overlay.is-open .modal{transform:none}
+  .modal-icon{
+    display:flex;align-items:center;justify-content:center;
+    width:56px;height:56px;border-radius:50%;
+    margin:0 auto 18px;
+    background:rgba(21,58,155,.1);color:var(--blue);
+  }
+  .modal-icon svg{width:26px;height:26px}
+  .modal h3{margin:0 0 10px;font-size:20px;font-weight:900;color:var(--navy);letter-spacing:-.01em}
+  .modal p{margin:0 0 26px;color:var(--muted);font-size:15px}
+  .modal-actions{display:flex;gap:10px}
+  .modal-btn{
+    flex:1;border:0;cursor:pointer;
+    font-family:inherit;font-weight:700;font-size:16px;
+    padding:14px 18px;border-radius:999px;
+    transition:background .15s ease, color .15s ease;
+  }
+  .modal-btn.cancel{background:#F1F2F6;color:var(--muted)}
+  .modal-btn.cancel:hover{background:#E4E7EF;color:var(--ink)}
+  .modal-btn.confirm{background:var(--orange);color:#fff}
+  .modal-btn.confirm:hover{background:#D93C17}
+  body.modal-open{overflow:hidden}
+
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .floating-cta,.floating-cta::after,.modal,.modal-overlay{transition:none}
+    .floating-cta:hover,.floating-cta:focus-visible{transform:none}
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:900px){
+    .steps{grid-template-columns:repeat(2,1fr)}
+  }
+  @media (max-width:640px){
+    .hero{padding:64px 0 72px}
+    section.block{padding:60px 0}
+    .cta-band{padding:60px 0}
+    .steps,.prizes{grid-template-columns:1fr}
+    .header-cta{padding:10px 16px;font-size:14px}
+    .logo{height:28px}
+    .btn-primary{width:100%;padding:16px 24px}
+    .btn-ghost{width:100%}
+    .sch-key{flex:0 0 100%}
+    .floating-cta{right:18px;bottom:18px;width:58px;height:58px}
+    .floating-cta svg{width:25px;height:25px}
+    .floating-cta::after{display:none}
+    .modal{padding:30px 22px 22px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-inner">
+    <a href="https://fun-coding.org" target="_blank" rel="noopener">
+      <img class="logo" src="logo2026_main.png" alt="잔재미코딩">
+    </a>
+    <a class="header-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSeRq-UyEJERcm6cZtYELnEGUfbHigFsX4LF2uIpPxlJovE3IQ/viewform" target="_blank" rel="noopener" data-survey-link>서베이 참여하기</a>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">잔재미코딩 학습자 서베이 이벤트</span>
+    <h1>다음 강의는<br><em>당신의 의견</em>으로 만들어집니다</h1>
+    <p class="hero-sub">5분이면 끝나는 서베이에 응답하고, 무료 수강권과 할인 쿠폰 추첨에 자동으로 응모하세요.</p>
+    <p class="hero-target">대상: 잔재미코딩 강의에 관심 있는 누구나 (입문자 · 기존 수강생)</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSeRq-UyEJERcm6cZtYELnEGUfbHigFsX4LF2uIpPxlJovE3IQ/viewform" target="_blank" rel="noopener" data-survey-link>서베이 참여하기</a>
+      <a class="btn btn-ghost" href="#benefit">혜택 먼저 보기</a>
+    </div>
+    <p class="hero-note">구글 폼 5분 응답 · 응답만 하면 자동으로 추첨 응모</p>
+  </div>
+</section>
+
+<!-- 참여 방법 -->
+<section class="block" id="how">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="sec-label">HOW TO JOIN</p>
+      <h2 class="sec-title">참여 방법</h2>
+      <p class="sec-desc">4단계면 끝납니다. 별도 가입이나 결제 없이 참여할 수 있어요.</p>
+    </div>
+    <ol class="steps">
+      <li>
+        <div class="step-num">1</div>
+        <p class="step-text">페이지 둘러보기</p>
+      </li>
+      <li>
+        <div class="step-num">2</div>
+        <p class="step-text">“서베이 참여하기” 버튼 클릭</p>
+      </li>
+      <li>
+        <div class="step-num">3</div>
+        <p class="step-text">구글 폼에 5분 응답</p>
+      </li>
+      <li>
+        <div class="step-num">4</div>
+        <p class="step-text">자동으로 추첨 응모</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- 혜택 -->
+<section class="block alt" id="benefit">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="sec-label">BENEFIT</p>
+      <h2 class="sec-title">혜택</h2>
+      <p class="sec-desc">응답해 주신 분들께 추첨으로 수강 혜택을 드립니다.</p>
+    </div>
+    <div class="prizes">
+      <div class="prize first">
+        <span class="rank">1등</span>
+        <h3>잔재미코딩 무료 수강권</h3>
+        <p>5명, 원하는 강의 선택</p>
+      </div>
+      <div class="prize second">
+        <span class="rank">2등</span>
+        <h3>모든 강의 30% 할인 쿠폰</h3>
+        <p>응답자 100명</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 일정 -->
+<section class="block" id="schedule">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="sec-label">SCHEDULE</p>
+      <h2 class="sec-title">일정</h2>
+    </div>
+    <ul class="schedule">
+      <li>
+        <span class="sch-key">응모 기간</span>
+        <p class="sch-val">4주간 (placeholder)</p>
+      </li>
+      <li>
+        <span class="sch-key">당첨자 발표</span>
+        <p class="sch-val">응모 마감 후 1주 이내 (개별 연락)</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band">
+  <div class="wrap">
+    <h2>당신의 한마디가<br>다음 강의의 커리큘럼이 됩니다</h2>
+    <p>지금 서베이에 참여하고 무료 수강권 · 할인 쿠폰 추첨에 응모하세요.</p>
+    <div class="btn-row" style="justify-content:center">
+      <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSeRq-UyEJERcm6cZtYELnEGUfbHigFsX4LF2uIpPxlJovE3IQ/viewform" target="_blank" rel="noopener" data-survey-link>서베이 참여하기</a>
+    </div>
+    <p class="hero-note">소요 시간 약 5분</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>
+      <p class="brand-line">잔재미코딩 — 입문자도 단계별로 따라올 수 있는 IT·AI 교육 플랫폼.</p>
+      <ul class="footer-links">
+        <li><a href="https://fun-coding.org" target="_blank" rel="noopener">fun-coding.org</a></li>
+        <li><a href="https://school.fun-coding.org" target="_blank" rel="noopener">school.fun-coding.org</a></li>
+      </ul>
+      <p class="footer-contact">문의: <a href="mailto:contact@fun-coding.org">contact@fun-coding.org</a></p>
+    </div>
+    <div>
+      <a class="header-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSeRq-UyEJERcm6cZtYELnEGUfbHigFsX4LF2uIpPxlJovE3IQ/viewform" target="_blank" rel="noopener" data-survey-link>서베이 참여하기</a>
+    </div>
+  </div>
+</footer>
+
+<!-- 플로팅 CTA -->
+<a class="floating-cta"
+   href="https://docs.google.com/forms/d/e/1FAIpQLSeRq-UyEJERcm6cZtYELnEGUfbHigFsX4LF2uIpPxlJovE3IQ/viewform"
+   target="_blank" rel="noopener"
+   data-survey-link
+   aria-label="서베이 참여하기">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2"></path>
+    <rect x="9" y="3" width="6" height="4" rx="1"></rect>
+    <path d="M9 12h4M9 16h3"></path>
+    <path d="M18.5 3.5a1.77 1.77 0 0 1 2.5 2.5L17 10l-3 1 1-3z"></path>
+  </svg>
+</a>
+
+<!-- 서베이 안내 모달 -->
+<div class="modal-overlay" id="surveyModal" role="dialog" aria-modal="true"
+     aria-labelledby="surveyModalTitle" aria-describedby="surveyModalDesc" aria-hidden="true">
+  <div class="modal">
+    <div class="modal-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="9"></circle>
+        <path d="M12 11v5M12 8h.01"></path>
+      </svg>
+    </div>
+    <h3 id="surveyModalTitle">잠깐, 안내드립니다</h3>
+    <p id="surveyModalDesc">서베이는 익명으로 진행됩니다.<br>참여하시겠습니까?</p>
+    <div class="modal-actions">
+      <button type="button" class="modal-btn cancel" id="surveyCancel">취소</button>
+      <button type="button" class="modal-btn confirm" id="surveyConfirm">확인</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var overlay = document.getElementById('surveyModal');
+  var confirmBtn = document.getElementById('surveyConfirm');
+  var cancelBtn = document.getElementById('surveyCancel');
+  var focusables = [cancelBtn, confirmBtn];
+  var pendingUrl = '';
+  var lastTrigger = null;
+
+  function openModal(url, trigger){
+    pendingUrl = url;
+    lastTrigger = trigger;
+    overlay.classList.add('is-open');
+    overlay.setAttribute('aria-hidden','false');
+    document.body.classList.add('modal-open');
+    confirmBtn.focus();
+  }
+
+  function closeModal(){
+    overlay.classList.remove('is-open');
+    overlay.setAttribute('aria-hidden','true');
+    document.body.classList.remove('modal-open');
+    if(lastTrigger && lastTrigger.focus) lastTrigger.focus();
+  }
+
+  // 확인 클릭(=사용자 제스처) 시점에 새 창을 열어야 팝업 차단을 피할 수 있음
+  function openSurvey(url){
+    var a = document.createElement('a');
+    a.href = url;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll('[data-survey-link]'), function(el){
+    el.addEventListener('click', function(e){
+      // 새 탭으로 직접 열기(Ctrl/Cmd/Shift, 마우스 가운데 클릭)는 그대로 통과
+      if(e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+      e.preventDefault();
+      openModal(el.href, el);
+    });
+  });
+
+  confirmBtn.addEventListener('click', function(){
+    var url = pendingUrl;
+    closeModal();
+    openSurvey(url);
+  });
+
+  cancelBtn.addEventListener('click', closeModal);
+
+  overlay.addEventListener('click', function(e){
+    if(e.target === overlay) closeModal();
+  });
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && overlay.classList.contains('is-open')) closeModal();
+  });
+
+  // 모달 안에 포커스 고정
+  overlay.addEventListener('keydown', function(e){
+    if(e.key !== 'Tab') return;
+    e.preventDefault();
+    var i = focusables.indexOf(document.activeElement);
+    var next = e.shiftKey
+      ? (i <= 0 ? focusables.length - 1 : i - 1)
+      : (i >= focusables.length - 1 ? 0 : i + 1);
+    focusables[next].focus();
+  });
+})();
+</script>
+
+</body>
+</html>
